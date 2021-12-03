@@ -457,3 +457,6 @@ Model is to find out the best parmaters to describe the Adult's mental worriedne
 
 #### As a next step we want to take this project forward by combining the individual module so that we could find some valuable insights like source of Covid-19 or Mental Health and related symptomps from unstructured text.
 
+![Final Road map](/Images/Road_map.png)
+
+
