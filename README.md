@@ -1,18 +1,56 @@
-We used NLP library focused on developing easy to use Question generation .<br>
+#Overview of The Project
+
+This is a NLP based project focused on open source surveyed data where people demonstrated their views based on the experience during COVID-19 from individual or family level.
+The effort primarily focus on understanding the relation behind all the aspects mentioned by people as an experience & how that experience is 
+leading to a conclussion to mental health or stress or changes in daily activity.
+
+With regrdas to that we built a rich Knowledge Tree following the concept of relation between User's motive related to any concept or action.
+Intention is to use that as a Knowledge Base  for any kind of relation & getting answer to it.
+We have focused on creating dynamic FAQ generation from unstructured text with Para Phrasing Capability that can be used to reach to an answer very easily.
+Later we can use that FAQ to get different type of answer from the knowledge Base to get answer & related answer as well.
+
+We found the different component like mental stress or sleep quality or other feature like that are closely related to anyone mental's health collected from survey report.
+To address that we have built a classification model to target those feature which is playing key role to degrage anyone's mental condition & target that to help them recover.
+We could use that feature to recommend any suggestion based on other's people action from Knowledge base.
+
+### Currently Supported Capabilities :
 
 ### Currently Supported Question Generation Capabilities :
 <pre>
+1. Knowledge Base Engine
 1. Multiple Choice Questions (MCQs)
 2. Boolean Questions (Yes/No)
-3. General FAQs
-4. Paraphrasing any Question  
-5. Question Answering.
+3. Paraphrasing any Question
+4. Mental Worriedness Classification Model
+5. Keyword Extraction
 </pre>
 
+## Installation Steps
 
-## 1. Installation
+### Knowledge_Graph Libraries
 
-### 1.1 Libraries
+1. Spacy - 2.2.4
+2. Pandas - 1.1.5
+3. Networkx - 2.6.3
+4. Matplotlib - 3.2.2
+5. sklearn - 1.0.1
+
+### Data Used : crisislogger.csv
+
+### Running Code :
+
+<pre>
+1. Read Text Paragraphs
+1. Break the sentences using Engish Cojugation Rules using Regex
+2. Find Entities Like Subject & Object of the phrase or sentence
+3. Find relation between Subject & Object
+4. Convert the above 3 parameters to organized data
+5. Plot the Knowledge Graph
+</pre>
+
+![Kg Mental Health](https://drive.google.com/file/d/1i-l06m_tnKjhQ3BcW1wXmrs0KO-uff5s/view?usp=sharing)
+
+### 1.1 FAQ Generation Libraries
 ```
 https://pypi.org/project/sense2vec/
 https://boudinfl.github.io/pke/build/html/index.html
@@ -55,9 +93,9 @@ tar -xvf  s2v_reddit_2015_md.tar.gz
 <details>
 <summary>Show Output</summary>
 
-Transcript: I’m a woman, aged 63 (almost 64) and still working full time because of the change in the pension age. I was hospitalised with Swine flu in 2009 and it had a big effect on my health. I was diagnosed with asthma in 2010. My lungs have never fully recovered from the severe case of Swine flu. 
-I normally work nine to five and there’s have been times over the past two years when I’ve felt very tired and weary. But it wasn’t until this pandemic hit that I actually felt old for the first time in my life. I’ll admit that I went into a blind spin panic when I realised how bad this pandemic was at the end of March. Stress being one of the triggers for my asthma, the feeling of dread and tightness in my chest caused my asthma to peak. I remembered how ill i was in 2009 and the feeling that I just wanted to die and due to my weakened lungs I couldn’t shake the fear. I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. My son went to pick it up from the pharmacy the next day, only to discover they couldn’t get supplies of my usual medication. Another call to my doctor and she prescribed an alternative to the medication I had been on since 2010 and my initial asthma diagnosis. A few days later my wheezing had eased but I found I was suffering from severe reflux at nights. So bad it almost choked me on a few occasions, thus adding to my considerable stress. Another call to my doctor, who said the reflux was caused by stress so I was given acid suppressants and signed off work until everything could settle down a bit. I work for a train operating company so I am considered a key worker. 
-In summary, I have found the last six weeks to be the most stressful weeks of my life. I’ve always considered myself to be as fit and able as my younger colleagues but this crisis has made me realise I need to take better care of myself and not put my job first. This virus has reminded me that I am getting old.
+Transcript: Iâ€™m a woman, aged 63 (almost 64) and still working full time because of the change in the pension age. I was hospitalised with Swine flu in 2009 and it had a big effect on my health. I was diagnosed with asthma in 2010. My lungs have never fully recovered from the severe case of Swine flu. 
+I normally work nine to five and thereâ€™s have been times over the past two years when Iâ€™ve felt very tired and weary. But it wasnâ€™t until this pandemic hit that I actually felt old for the first time in my life. Iâ€™ll admit that I went into a blind spin panic when I realised how bad this pandemic was at the end of March. Stress being one of the triggers for my asthma, the feeling of dread and tightness in my chest caused my asthma to peak. I remembered how ill i was in 2009 and the feeling that I just wanted to die and due to my weakened lungs I couldnâ€™t shake the fear. I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. My son went to pick it up from the pharmacy the next day, only to discover they couldnâ€™t get supplies of my usual medication. Another call to my doctor and she prescribed an alternative to the medication I had been on since 2010 and my initial asthma diagnosis. A few days later my wheezing had eased but I found I was suffering from severe reflux at nights. So bad it almost choked me on a few occasions, thus adding to my considerable stress. Another call to my doctor, who said the reflux was caused by stress so I was given acid suppressants and signed off work until everything could settle down a bit. I work for a train operating company so I am considered a key worker. 
+In summary, I have found the last six weeks to be the most stressful weeks of my life. Iâ€™ve always considered myself to be as fit and able as my younger colleagues but this crisis has made me realise I need to take better care of myself and not put my job first. This virus has reminded me that I am getting old.
 
 ```
 
@@ -105,24 +143,24 @@ BooleanQuestions
                            'still working full time because of the change in '
                            'the pension age. I was hospitalised with Swine flu '
                            'in 2009 and it had '],
- 'Question': 'I’m a woman, aged 63 (almost 64) and still working full time '
+ 'Question': 'Iâ€™m a woman, aged 63 (almost 64) and still working full time '
              'because of the change in the pension age. I was hospitalised '
              'with Swine flu in 2009 and it had a big effect on my health. I '
              'was diagnosed with asthma in 2010. My lungs have never fully '
              'recovered from the severe case of Swine flu. \n'
-             'I normally work nine to five and there’s have been times over '
-             'the past two years when I’ve felt very tired and weary. But it '
-             'wasn’t until this pandemic hit that I actually felt old for the '
-             'first time in my life. I’ll admit that I went into a blind spin '
+             'I normally work nine to five and thereâ€™s have been times over '
+             'the past two years when Iâ€™ve felt very tired and weary. But it '
+             'wasnâ€™t until this pandemic hit that I actually felt old for the '
+             'first time in my life. Iâ€™ll admit that I went into a blind spin '
              'panic when I realised how bad this pandemic was at the end of '
              'March. Stress being one of the triggers for my asthma, the '
              'feeling of dread and tightness in my chest caused my asthma to '
              'peak. I remembered how ill i was in 2009 and the feeling that I '
-             'just wanted to die and due to my weakened lungs I couldn’t shake '
+             'just wanted to die and due to my weakened lungs I couldnâ€™t shake '
              'the fear. I rang my doctor (not wanting to visit the surgery) '
              'and she advised I double up my asthma medication and issued a '
              'prescription for extra supplies. My son went to pick it up from '
-             'the pharmacy the next day, only to discover they couldn’t get '
+             'the pharmacy the next day, only to discover they couldnâ€™t get '
              'supplies of my usual medication. Another call to my doctor and '
              'she prescribed an alternative to the medication I had been on '
              'since 2010 and my initial asthma diagnosis. A few days later my '
@@ -134,7 +172,7 @@ BooleanQuestions
              'settle down a bit. I work for a train operating company so I am '
              'considered a key worker. \n'
              'In summary, I have found the last six weeks to be the most '
-             'stressful weeks of my life. I’ve always considered myself to be '
+             'stressful weeks of my life. Iâ€™ve always considered myself to be '
              'as fit and able as my younger colleagues but this crisis has '
              'made me realise I need to take better care of myself and not put '
              'my job first. This virus has reminded me that I am getting old.'}
@@ -190,7 +228,7 @@ display(HTML(faq_df.to_html()))
                            'medication and issued a prescription for extra '
                            'supplies. My son went to pick it up from the '
                            'pharmacy the next day, only to discover they '
-                           'couldn’t get supplies of my usual medication.',
+                           'couldnâ€™t get supplies of my usual medication.',
                 'id': 3},
                {'Answer': 'doctor',
                 'Question': 'Who advised me to double up my asthma medication '
@@ -206,24 +244,24 @@ display(HTML(faq_df.to_html()))
                            'been on since 2010 and my initial asthma '
                            'diagnosis.',
                 'id': 4}],
- 'statement': 'I’m a woman, aged 63 (almost 64) and still working full time '
+ 'statement': 'Iâ€™m a woman, aged 63 (almost 64) and still working full time '
               'because of the change in the pension age. I was hospitalised '
               'with Swine flu in 2009 and it had a big effect on my health. I '
               'was diagnosed with asthma in 2010. My lungs have never fully '
               'recovered from the severe case of Swine flu. I normally work '
-              'nine to five and there’s have been times over the past two '
-              'years when I’ve felt very tired and weary. But it wasn’t until '
+              'nine to five and thereâ€™s have been times over the past two '
+              'years when Iâ€™ve felt very tired and weary. But it wasnâ€™t until '
               'this pandemic hit that I actually felt old for the first time '
-              'in my life. I’ll admit that I went into a blind spin panic when '
+              'in my life. Iâ€™ll admit that I went into a blind spin panic when '
               'I realised how bad this pandemic was at the end of March. '
               'Stress being one of the triggers for my asthma, the feeling of '
               'dread and tightness in my chest caused my asthma to peak. I '
               'remembered how ill i was in 2009 and the feeling that I just '
-              'wanted to die and due to my weakened lungs I couldn’t shake the '
+              'wanted to die and due to my weakened lungs I couldnâ€™t shake the '
               'fear. I rang my doctor (not wanting to visit the surgery) and '
               'she advised I double up my asthma medication and issued a '
               'prescription for extra supplies. My son went to pick it up from '
-              'the pharmacy the next day, only to discover they couldn’t get '
+              'the pharmacy the next day, only to discover they couldnâ€™t get '
               'supplies of my usual medication. Another call to my doctor and '
               'she prescribed an alternative to the medication I had been on '
               'since 2010 and my initial asthma diagnosis. A few days later my '
@@ -234,7 +272,7 @@ display(HTML(faq_df.to_html()))
               'given acid suppressants and signed off work until everything '
               'could settle down a bit. I work for a train operating company '
               'so I am considered a key worker. In summary, I have found the '
-              'last six weeks to be the most stressful weeks of my life. I’ve '
+              'last six weeks to be the most stressful weeks of my life. Iâ€™ve '
               'always considered myself to be as fit and able as my younger '
               'colleagues but this crisis has made me realise I need to take '
               'better care of myself and not put my job first. This virus has '
@@ -244,7 +282,7 @@ display(HTML(faq_df.to_html()))
 Question	Answer	id	context
 0	What did my doctor tell me to double up on?	asthma medication	1	I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies.
 1	What was the cause of my wheezing?	reflux	2	Another call to my doctor, who said the reflux was caused by stress so I was given acid suppressants and signed off work until everything could settle down a bit. A few days later my wheezing had eased but I found I was suffering from severe reflux at nights.
-2	What did my doctor tell me to double up my asthma medication and issue a prescription for?	supplies	3	I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. My son went to pick it up from the pharmacy the next day, only to discover they couldn’t get supplies of my usual medication.
+2	What did my doctor tell me to double up my asthma medication and issue a prescription for?	supplies	3	I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. My son went to pick it up from the pharmacy the next day, only to discover they couldnâ€™t get supplies of my usual medication.
 3	Who advised me to double up my asthma medication and issued a prescription for extra supplies?	doctor	4	Another call to my doctor, who said the reflux was caused by stress so I was given acid suppressants and signed off work until everything could settle down a bit. I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. Another call to my doctor and she prescribed an alternative to the medication I had been on since 2010 and my initial asthma diagnosis.
  ```
 </details>
@@ -311,7 +349,7 @@ unning model for generation
                            'medication and issued a prescription for extra '
                            'supplies. My son went to pick it up from the '
                            'pharmacy the next day, only to discover they '
-                           'couldn’t get supplies of my usual medication.',
+                           'couldnâ€™t get supplies of my usual medication.',
                 'extra_options': [],
                 'id': 3,
                 'options': ['Rations', 'Building Materials', 'Stockpiles'],
@@ -339,24 +377,24 @@ unning model for generation
                                       'medication and issued a prescription '
                                       'for extra supplies?',
                 'question_type': 'MCQ'}],
- 'statement': 'I’m a woman, aged 63 (almost 64) and still working full time '
+ 'statement': 'Iâ€™m a woman, aged 63 (almost 64) and still working full time '
               'because of the change in the pension age. I was hospitalised '
               'with Swine flu in 2009 and it had a big effect on my health. I '
               'was diagnosed with asthma in 2010. My lungs have never fully '
               'recovered from the severe case of Swine flu. I normally work '
-              'nine to five and there’s have been times over the past two '
-              'years when I’ve felt very tired and weary. But it wasn’t until '
+              'nine to five and thereâ€™s have been times over the past two '
+              'years when Iâ€™ve felt very tired and weary. But it wasnâ€™t until '
               'this pandemic hit that I actually felt old for the first time '
-              'in my life. I’ll admit that I went into a blind spin panic when '
+              'in my life. Iâ€™ll admit that I went into a blind spin panic when '
               'I realised how bad this pandemic was at the end of March. '
               'Stress being one of the triggers for my asthma, the feeling of '
               'dread and tightness in my chest caused my asthma to peak. I '
               'remembered how ill i was in 2009 and the feeling that I just '
-              'wanted to die and due to my weakened lungs I couldn’t shake the '
+              'wanted to die and due to my weakened lungs I couldnâ€™t shake the '
               'fear. I rang my doctor (not wanting to visit the surgery) and '
               'she advised I double up my asthma medication and issued a '
               'prescription for extra supplies. My son went to pick it up from '
-              'the pharmacy the next day, only to discover they couldn’t get '
+              'the pharmacy the next day, only to discover they couldnâ€™t get '
               'supplies of my usual medication. Another call to my doctor and '
               'she prescribed an alternative to the medication I had been on '
               'since 2010 and my initial asthma diagnosis. A few days later my '
@@ -367,7 +405,7 @@ unning model for generation
               'given acid suppressants and signed off work until everything '
               'could settle down a bit. I work for a train operating company '
               'so I am considered a key worker. In summary, I have found the '
-              'last six weeks to be the most stressful weeks of my life. I’ve '
+              'last six weeks to be the most stressful weeks of my life. Iâ€™ve '
               'always considered myself to be as fit and able as my younger '
               'colleagues but this crisis has made me realise I need to take '
               'better care of myself and not put my job first. This virus has '
@@ -377,7 +415,7 @@ unning model for generation
 question_statement	question_type	answer	id	options	options_algorithm	extra_options	context
 0	What did my doctor tell me to double up on?	MCQ	asthma medication	1	[Inhalers, Albuterol, Advair]	sense2vec	[Sudafed, Own Medication, Nasal Spray, Antibiotics, Aspirin, Decongestants]	I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies.
 1	What was the cause of my wheezing?	MCQ	reflux	2	[Constipation, Gerd, Stomach Issues]	sense2vec	[Nausea, Heartburn, Dry Mouth, Ibs, Gi Problems]	Another call to my doctor, who said the reflux was caused by stress so I was given acid suppressants and signed off work until everything could settle down a bit. A few days later my wheezing had eased but I found I was suffering from severe reflux at nights.
-2	What did my doctor tell me to double up my asthma medication and issue a prescription for?	MCQ	supplies	3	[Rations, Building Materials, Stockpiles]	sense2vec	[]	I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. My son went to pick it up from the pharmacy the next day, only to discover they couldn’t get supplies of my usual medication.
+2	What did my doctor tell me to double up my asthma medication and issue a prescription for?	MCQ	supplies	3	[Rations, Building Materials, Stockpiles]	sense2vec	[]	I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. My son went to pick it up from the pharmacy the next day, only to discover they couldnâ€™t get supplies of my usual medication.
 3	Who advised me to double up my asthma medication and issued a prescription for extra supplies?	MCQ	doctor	4	[Cardiologist, Doc, Primary Care Physician]	sense2vec	[General Practitioner]	Another call to my doctor, who said the reflux was caused by stress so I was given acid suppressants and signed off work until everything could settle down a bit. I rang my doctor (not wanting to visit the surgery) and she advised I double up my asthma medication and issued a prescription for extra supplies. Another call to my doctor and she prescribed an alternative to the medication I had been on since 2010 and my initial asthma diagnosis.
 ```
 </details>
@@ -394,12 +432,12 @@ pprint (output)
 <summary>Show Output</summary>
             
 ```
-('I’m a woman, aged 63 (almost 64) and still working full time because of the '
+('Iâ€™m a woman, aged 63 (almost 64) and still working full time because of the '
  'change in the pension age. i was hospitalised with swine flu in 2009 and it '
  'had a big effect on my health. i was diagnosed with asthma in 2010. my lungs '
  'have never fully recovered from the severe case of swine flu. i normally '
- 'work nine to five and there’s have been times over the past two years when '
- 'i’ve felt very tired and weary. but it wasn’t until this pandemic hit')
+ 'work nine to five and thereâ€™s have been times over the past two years when '
+ 'iâ€™ve felt very tired and weary. but it wasnâ€™t until this pandemic hit')
 ```
 </details>
 
@@ -407,4 +445,15 @@ pprint (output)
 ### NLP models used
 
 For maintaining meaningfulness in Questions, uses Three T5 models. One for Boolean Question generation, one for MCQs, FAQs, Paraphrasing and one for Summary answer generation.
+
+
+# Mental Worriedness Classification Model
+### Libraries
+Pandas - 1.1.5
+
+### Data Used : CRISIS_Adult_April_2020.csv, CRISIS_Adult_April_2021.csv, CRISIS_Adult_May_2020.csv, CRISIS_Adult_November_2020.csv
+
+Model is to find out the best parmaters to describe the Adult's mental worriedness & classify the level of worriedness form individual level.
+
+#### As a next step we want to take this project forward by combining the individual module so that we could find some valuable insights like source of Covid-19 or Mental Health and related symptomps from unstructured text.
 
