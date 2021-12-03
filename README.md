@@ -48,7 +48,7 @@ We could use that feature to recommend any suggestion based on other's people ac
 5. Plot the Knowledge Graph
 </pre>
 
-![Kg Mental Health](https://drive.google.com/file/d/1i-l06m_tnKjhQ3BcW1wXmrs0KO-uff5s/view?usp=sharing)
+![Kg Mental Health](/Images/KG_Mental_health.png)
 
 ### 1.1 FAQ Generation Libraries
 ```
